@@ -5,169 +5,178 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shared Marketing Campaign Cost Calculator</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #F8FAFC; /* Light gray background */
+            background-color: #f8fafc; /* A light, neutral gray */
         }
-        /* Custom styles for the slider */
-        input[type=range] {
-            -webkit-appearance: none;
-            width: 100%;
-            background: transparent;
-        }
+        /* Custom slider track */
         input[type=range]::-webkit-slider-runnable-track {
-            width: 100%;
-            height: 8px;
-            cursor: pointer;
-            background: #e2e8f0; /* gray-200 */
-            border-radius: 5px;
+            background: #D6FFFF; /* A tint of Teal */
         }
+        input[type=range]::-moz-range-track {
+            background: #D6FFFF;
+        }
+        /* Custom slider thumb */
         input[type=range]::-webkit-slider-thumb {
             -webkit-appearance: none;
-            height: 20px;
+            appearance: none;
             width: 20px;
+            height: 20px;
             border-radius: 50%;
-            background: #493ED1; /* Roo Blue */
+            background: #007B8B; /* Dark Teal */
             cursor: pointer;
-            margin-top: -6px; /* Center thumb on track */
-            border: 2px solid white;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            margin-top: -6px;
         }
-        input[type=range]:focus::-webkit-slider-runnable-track {
-            background: #cbd5e1; /* gray-300 */
+        input[type=range]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #007B8B;
+            cursor: pointer;
         }
+        .number-input-spinner::-webkit-outer-spin-button,
+        .number-input-spinner::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .number-input-spinner {
+            -moz-appearance: textfield;
+        }
+        /* Color definitions for reuse */
+        .care-blue { color: #00286E; }
+        .dark-teal { color: #007B8B; }
+        .pink-pop { color: #FF0089; }
     </style>
 </head>
-<body class="antialiased text-gray-800">
-
-    <div class="container mx-auto p-4 sm:p-6 lg:p-8 max-w-7xl">
-        <!-- Header -->
-        <div class="text-center mb-8">
-            <h1 class="text-4xl font-extrabold text-[#00286E]">Shared Marketing Campaign Cost Calculator</h1>
-            <p class="text-lg text-gray-600 mt-2">Estimate your 6-month campaign costs and savings with our partnership.</p>
-            <p class="text-xs text-gray-500 mt-2 italic">Disclaimer: All costs below are rough estimates and not indicative of how much your affiliate may need to pay to participate in this campaign.</p>
-        </div>
+<body class="p-4 sm:p-6 md:p-8">
+    <div class="max-w-6xl mx-auto">
+        <header class="text-center mb-6">
+            <h1 class="text-3xl sm:text-4xl font-extrabold text-[#00286E]">Shared Marketing Campaign Cost Calculator</h1>
+            <p class="mt-2 text-base text-gray-600 max-w-3xl mx-auto">This tool helps our affiliates estimate the costs and contributions for a 6-month shared marketing campaign.</p>
+            <p class="text-xs text-gray-500 mt-4 max-w-3xl mx-auto">Disclaimer: All costs below are rough estimates and not indicative of how much your affiliate may need to pay to participate in this campaign.</p>
+        </header>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <!-- Left Column: Inputs -->
             <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-200 space-y-6">
-                <div class="space-y-4">
+                <div>
                     <h2 class="text-2xl font-bold text-[#007B8B]">Services to Promote</h2>
-                    <p class="text-sm text-gray-500">Please select the number of service lines you would like to promote on the platforms below.</p>
-                    
-                    <!-- Required Platforms -->
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-800 border-b pb-2 mb-3">Required Platforms</h3>
-                         <p class="text-xs text-gray-500 -mt-2 mb-3">Please select the number of service lines you want to advertise on Meta and Google. (Minimum of 1)</p>
-                        <div class="pl-4 space-y-4">
-                            <div>
-                                <label for="meta-services" class="block text-sm font-medium text-gray-700 mb-1">Meta Service Lines</label>
-                                <input type="number" id="meta-services" min="1" value="1" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-[#493ED1] focus:border-[#493ED1]">
-                                <p class="text-xs text-gray-500 mt-1">$8,000 minimum spend per month, per service line.</p>
-                            </div>
-                            <div>
-                                <label for="google-services" class="block text-sm font-medium text-gray-700 mb-1">Google Service Lines</label>
-                                <input type="number" id="google-services" min="1" value="1" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-[#493ED1] focus:border-[#493ED1]">
-                                <p class="text-xs text-gray-500 mt-1">$5,000 minimum spend per month, per service line.</p>
-                            </div>
+                    <p class="text-sm text-gray-500 mt-2">Please select the number of service lines you would like to promote on the platforms below.</p>
+                </div>
+                
+                <!-- Required Platforms -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800">Required Platforms</h3>
+                    <p class="text-xs text-gray-500 mt-1">Please select the number of service lines you want to advertise on Meta and Google. (Minimum of 1)</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3">
+                        <div>
+                            <label for="meta-services" class="block text-sm font-medium text-gray-700">Meta</label>
+                            <input type="number" id="meta-services" min="1" value="1" class="number-input-spinner mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <p class="text-xs text-gray-500 mt-1">$8,000 minimum spend/month/service</p>
+                        </div>
+                        <div>
+                            <label for="google-services" class="block text-sm font-medium text-gray-700">Google</label>
+                            <input type="number" id="google-services" min="1" value="1" class="number-input-spinner mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <p class="text-xs text-gray-500 mt-1">$5,000 minimum spend/month/service</p>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Add-On Platforms -->
-                    <div>
-                        <h3 class="text-lg font-semibold text-gray-800 border-b pb-2 mb-3">Add-On Platforms</h3>
-                        <p class="text-xs text-gray-500 -mt-2 mb-3">Please select the number of service lines you want to advertise on the following platforms.</p>
-                        <div class="pl-4 space-y-4">
-                            <div>
-                                <label for="tiktok-services" class="block text-sm font-medium text-gray-700 mb-1">TikTok Service Lines</label>
-                                <input type="number" id="tiktok-services" min="0" value="0" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-[#493ED1] focus:border-[#493ED1]">
-                                <p class="text-xs text-gray-500 mt-1">$10,000 minimum spend per month, per service line. Note: Services promoted on TikTok must also be promoted on Meta.</p>
-                            </div>
-                            <div>
-                                <label for="spotify-services" class="block text-sm font-medium text-gray-700 mb-1">Spotify Service Lines</label>
-                                <input type="number" id="spotify-services" min="0" value="0" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-[#493ED1] focus:border-[#493ED1]">
-                                <p class="text-xs text-gray-500 mt-1">$10,000 minimum spend per month, per service line.</p>
-                            </div>
-                             <div>
-                                <label for="youtube-ctv" class="block text-sm font-medium text-gray-700 mb-1">YouTube Connected TV</label>
-                                <input type="number" id="youtube-ctv" min="0" max="1" value="0" class="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:ring-[#493ED1] focus:border-[#493ED1]">
-                                <p class="text-xs text-gray-500 mt-1">$10,000 minimum spend per month. Note: Only one 30s "Care for All" video is available for this platform.</p>
-                            </div>
+                <!-- Add-On Platforms -->
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-800">Add-On Platforms</h3>
+                    <p class="text-xs text-gray-500 mt-1">Please select the number of service lines you want to advertise on the following platforms.</p>
+                     <p class="text-xs text-gray-500 mt-1">The following platforms can be added to a campaign that includes at least one of the required platforms above.</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-3">
+                         <div>
+                            <label for="tiktok-services" class="block text-sm font-medium text-gray-700">TikTok</label>
+                            <input type="number" id="tiktok-services" min="0" value="0" class="number-input-spinner mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <p class="text-xs text-gray-500 mt-1">$10,000 minimum spend/month/service. Note: Services promoted on TikTok must also be promoted on Meta.</p>
+                        </div>
+                        <div>
+                            <label for="spotify-services" class="block text-sm font-medium text-gray-700">Spotify</label>
+                            <input type="number" id="spotify-services" min="0" value="0" class="number-input-spinner mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <p class="text-xs text-gray-500 mt-1">$10,000 minimum spend/month/service</p>
+                        </div>
+                        <div>
+                             <label for="youtube-services" class="block text-sm font-medium text-gray-700">YouTube Connected TV</label>
+                            <input type="number" id="youtube-services" min="0" max="1" value="0" class="number-input-spinner mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                            <p class="text-xs text-gray-500 mt-1">$10,000 minimum spend per month. Note: Only one 30s "Care for All" video is available for this platform.</p>
                         </div>
                     </div>
-                    <hr/>
-                    <div>
-                        <label for="total-media-spend-number" class="block text-sm font-medium text-gray-700 mb-1">Total Monthly Media Spend</label>
-                        <p class="text-xs text-gray-500 mt-1 mb-2">If you would like to spend more than the minimum, please adjust your spend using the slider or input box below.</p>
-                        <div class="flex items-center space-x-4 mt-2">
-                            <input type="range" id="total-media-spend-range" min="13000" max="500000" step="1000" value="13000" class="w-full">
-                            <input type="number" id="total-media-spend-number" min="13000" max="500000" step="1000" value="13000" class="w-36 p-2 border border-gray-300 rounded-lg shadow-sm">
-                        </div>
-                        <div class="flex justify-between text-xs text-gray-500 mt-1 px-1">
-                            <span id="minimum-spend">Min Monthly: $13,000</span>
-                            <span id="current-spend">Current Monthly: $13,000</span>
-                        </div>
-                    </div>
+                </div>
 
-                    <div class="pt-4">
-                        <div class="flex items-center">
-                            <input id="customizations-checkbox" type="checkbox" class="h-5 w-5 text-[#493ED1] rounded border-gray-300 focus:ring-[#493ED1]">
-                            <label for="customizations-checkbox" class="ml-3 text-sm font-medium text-gray-800">Add-On Creative Customizations</label>
+                <!-- Media Spend Slider -->
+                <div class="space-y-3 pt-4 border-t">
+                    <label for="media-spend" class="block text-lg font-semibold text-gray-800">Total Monthly Media Spend</label>
+                    <p class="text-xs text-gray-500 mt-1">If you would like to spend more than the minimum, please adjust your spend using the slider below.</p>
+                    <div class="flex items-center gap-4">
+                        <input type="range" id="media-spend-slider" min="0" max="500000" value="0" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                        <div class="relative">
+                            <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">$</span>
+                            <input type="number" id="media-spend-input" min="0" value="0" class="number-input-spinner pl-7 block w-32 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
                         </div>
-                         <p class="text-xs text-gray-500 mt-1 pl-8">$225/hr at affiliate expense (i.e. Custom images or copy)</p>
+                    </div>
+                    <p class="text-xs text-gray-500">Minimum spend based on selections: <strong id="min-spend">$0</strong></p>
+                </div>
+                 <!-- Customizations Checkbox -->
+                <div class="flex items-start pt-4 border-t">
+                    <div class="flex h-5 items-center">
+                         <input id="customizations" name="customizations" type="checkbox" class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                    </div>
+                    <div class="ml-3 text-sm">
+                        <label for="customizations" class="font-medium text-gray-700">Add-On Creative Customizations</label>
+                        <p class="text-xs text-gray-500">$225/hr at affiliate expense (i.e. custom images or copy)</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Right Column: Results -->
-            <div class="bg-[#00BAC6]/20 p-6 sm:p-8 rounded-2xl border-2 border-[#00BAC6]/30 space-y-6">
-                <h2 class="text-2xl font-bold text-center text-[#00286E]">Estimated Costs for 6-Month Campaign</h2>
-                
-                <!-- Overall Totals -->
-                <div class="bg-white/70 p-4 rounded-lg text-center space-y-2">
-                    <div class="flex justify-between items-baseline">
-                        <span class="text-sm font-medium text-gray-600">Total 6-Month Media Spend</span>
-                        <span id="total-media-spend" class="text-lg font-bold text-gray-800">$0</span>
+            <!-- Right Column: Breakdown -->
+            <div class="bg-[#E0F7FA] p-6 sm:p-8 rounded-2xl shadow-lg border border-gray-200">
+                <h2 class="text-2xl font-bold text-[#00286E] mb-6 text-center">Estimated Costs for 6-Month Campaign</h2>
+
+                <div class="space-y-4 mb-8 text-center">
+                    <div>
+                        <p class="text-sm text-gray-600">Total 6-Month Media Spend</p>
+                        <p id="total-media-spend" class="text-2xl font-bold text-gray-800">$0</p>
                     </div>
-                    <div class="flex justify-between items-baseline">
-                        <span class="text-sm font-medium text-gray-600">Total Ad Agency Fee</span>
-                        <span id="total-agency-fee" class="text-lg font-bold text-gray-800">$0</span>
+                    <div>
+                        <p class="text-sm text-gray-600">Total Creative Costs</p>
+                        <p id="total-creative-costs" class="text-2xl font-bold text-gray-800">$0</p>
                     </div>
-                    <div class="flex justify-between items-baseline">
-                        <span class="text-sm font-medium text-gray-600">Total Creative Costs</span>
-                        <span id="total-creative-costs" class="text-lg font-bold text-gray-800">$0</span>
+                    <div>
+                        <p class="text-sm text-gray-600">Total Ad Agency Fee</p>
+                        <p id="total-agency-fee" class="text-2xl font-bold text-gray-800">$0</p>
                     </div>
                 </div>
 
-                <!-- Affiliate Cost Breakdown -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold text-[#00286E] mb-4">Affiliate's Estimated 6-Month Costs</h3>
-                    <div class="space-y-3 text-sm">
-                        <div class="flex justify-between"><span class="text-gray-600">Affiliate's Media Spend Portion</span><strong id="affiliate-media-spend" class="font-semibold">$0</strong></div>
-                        <div class="flex justify-between"><span class="text-gray-600">Affiliate's Ad Agency Fee</span><strong id="affiliate-agency-fee" class="font-semibold">$0</strong></div>
-                        <div class="flex justify-between"><span class="text-gray-600">Creative Customization Fees</span><strong id="affiliate-customization-fee" class="font-semibold">$0</strong></div>
-                        <hr class="my-2">
-                        <div class="flex justify-between text-base"><span class="font-bold">Total Affiliate Cost</span><strong id="total-affiliate-cost" class="font-bold text-lg text-[#007B8B]">$0</strong></div>
+                <div class="space-y-6">
+                    <!-- Affiliate Cost Breakdown -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-[#00286E] mb-4">Affiliate's Estimated 6-Month Costs</h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between"><span class="text-gray-600">Affiliate's Media Spend Portion</span><strong id="affiliate-media-spend" class="font-semibold">$0</strong></div>
+                            <div class="flex justify-between"><span class="text-gray-600">Affiliate's Agency Fee Portion</span><strong id="affiliate-agency-fee" class="font-semibold">$0</strong></div>
+                             <div class="flex justify-between"><span class="text-gray-600">Creative Customization Fees</span><strong id="customization-fees" class="font-semibold">$0</strong></div>
+                            <hr class="my-2">
+                            <div class="flex justify-between text-base"><span class="font-bold text-gray-800">Total Affiliate Cost</span><strong id="total-affiliate-cost" class="font-bold text-gray-900">$0</strong></div>
+                        </div>
+                    </div>
+                    <!-- Stronger's Contribution -->
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-bold text-[#007B8B] mb-4">Stronger's 6-Month Contribution</h3>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between"><span class="text-gray-600">Media Spend Covered</span><strong id="stronger-media-spend" class="font-semibold">$0</strong></div>
+                            <div class="flex justify-between"><span class="text-gray-600">Ad Agency Fee Covered</span><strong id="stronger-agency-fee" class="font-semibold">$0</strong></div>
+                             <div class="flex justify-between"><span class="text-gray-600">Creative Production Covered</span><strong id="creative-production-covered" class="font-semibold">$0</strong></div>
+                            <hr class="my-2">
+                            <div class="flex justify-between text-base"><span class="font-bold text-gray-800">Total Direct Contribution</span><strong id="total-stronger-contribution" class="font-bold text-gray-900">$0</strong></div>
+                        </div>
                     </div>
                 </div>
-                
-                <!-- Stronger's Contribution -->
-                <div class="bg-white p-6 rounded-lg shadow-md">
-                    <h3 class="text-xl font-bold text-[#007B8B] mb-4">Stronger's 6-Month Contribution</h3>
-                    <div class="space-y-3 text-sm">
-                        <div class="flex justify-between"><span class="text-gray-600">Media Spend Covered</span><strong id="stronger-media-spend" class="font-semibold">$0</strong></div>
-                        <div class="flex justify-between"><span class="text-gray-600">Ad Agency Fee Covered</span><strong id="stronger-agency-fee" class="font-semibold">$0</strong></div>
-                        <div class="flex justify-between"><span class="text-gray-600">Creative Production Covered</span><strong id="stronger-creative-production" class="font-semibold">$0</strong></div>
-                        <hr class="my-2">
-                        <div class="flex justify-between text-base"><span class="font-bold">Total Stronger Contribution</span><strong id="total-stronger-contribution" class="font-bold text-lg text-[#00286E]">$0</strong></div>
-                    </div>
-                </div>
-                 
-                <!-- Savings Summary -->
+                 <!-- Savings Summary -->
                 <div class="mt-8 bg-white p-6 rounded-lg text-center shadow-md">
                     <h3 class="text-2xl font-bold text-[#00286E]">Affiliate's Total Estimated 6-Month Savings</h3>
                     <p id="total-savings" class="text-4xl font-extrabold text-[#FF0089] mt-2">$0</p>
@@ -179,131 +188,131 @@
     </div>
 
     <script>
-        const metaInput = document.getElementById('meta-services');
-        const googleInput = document.getElementById('google-services');
-        const tiktokInput = document.getElementById('tiktok-services');
-        const spotifyInput = document.getElementById('spotify-services');
-        const youtubeInput = document.getElementById('youtube-ctv');
-        const totalMediaSpendRange = document.getElementById('total-media-spend-range');
-        const totalMediaSpendNumber = document.getElementById('total-media-spend-number');
-        const customizationsCheckbox = document.getElementById('customizations-checkbox');
-
-        const minimumSpendEl = document.getElementById('minimum-spend');
-        const currentSpendEl = document.getElementById('current-spend');
-
-        // Output elements
-        const totalMediaSpendEl = document.getElementById('total-media-spend');
-        const totalAgencyFeeEl = document.getElementById('total-agency-fee');
-        const totalCreativeCostsEl = document.getElementById('total-creative-costs');
-
-        const affiliateMediaSpendEl = document.getElementById('affiliate-media-spend');
-        const affiliateAgencyFeeEl = document.getElementById('affiliate-agency-fee');
-        const affiliateCustomizationFeeEl = document.getElementById('affiliate-customization-fee');
-        const totalAffiliateCostEl = document.getElementById('total-affiliate-cost');
-
-        const strongerMediaSpendEl = document.getElementById('stronger-media-spend');
-        const strongerAgencyFeeEl = document.getElementById('stronger-agency-fee');
-        const strongerCreativeProductionEl = document.getElementById('stronger-creative-production');
-        const totalStrongerContributionEl = document.getElementById('total-stronger-contribution');
+        const metaServicesInput = document.getElementById('meta-services');
+        const googleServicesInput = document.getElementById('google-services');
+        const tiktokServicesInput = document.getElementById('tiktok-services');
+        const spotifyServicesInput = document.getElementById('spotify-services');
+        const youtubeServicesInput = document.getElementById('youtube-services');
         
-        const totalSavingsEl = document.getElementById('total-savings');
+        const mediaSpendSlider = document.getElementById('media-spend-slider');
+        const mediaSpendInput = document.getElementById('media-spend-input');
+        const minSpendEl = document.getElementById('min-spend');
 
-        // Helper to format currency
+        const customizationsCheckbox = document.getElementById('customizations');
+
+        const inputs = [
+            metaServicesInput, googleServicesInput, tiktokServicesInput, 
+            spotifyServicesInput, youtubeServicesInput, mediaSpendSlider, 
+            mediaSpendInput, customizationsCheckbox
+        ];
+
         function formatCurrency(value) {
-            return new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(value);
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(value);
         }
 
-        // Main calculation function
-        function calculateCosts() {
-            const metaServices = parseInt(metaInput.value) || 0;
-            const googleServices = parseInt(googleInput.value) || 0;
-            const tiktokServices = parseInt(tiktokInput.value) || 0;
-            const spotifyServices = parseInt(spotifyInput.value) || 0;
-            const youtubeServices = parseInt(youtubeInput.value) || 0;
-            const campaignDuration = 6;
+        function calculateCreativeCosts() {
+            const metaServices = parseInt(metaServicesInput.value) || 0;
+            const googleServices = parseInt(googleServicesInput.value) || 0;
             
-            // DYNAMIC CALCULATION for Creative Production Savings
-            let creativeSavings = 0;
+            let metaCreativeCost = 0;
             if (metaServices > 0) {
-                creativeSavings += 5000 + (Math.max(0, metaServices - 1) * 2500);
+                metaCreativeCost = 5000 + (Math.max(0, metaServices - 1) * 2500);
             }
-            creativeSavings += googleServices * 750;
-
-            // Calculate minimum MONTHLY spend based on service lines
-            const calculatedMinimumMonthlySpend = (metaServices * 8000) + (googleServices * 5000) + (tiktokServices * 10000) + (spotifyServices * 10000) + (youtubeServices * 10000);
-            minimumSpendEl.textContent = `Min Monthly: ${formatCurrency(calculatedMinimumMonthlySpend)}`;
-            totalMediaSpendRange.min = calculatedMinimumMonthlySpend;
-            totalMediaSpendNumber.min = calculatedMinimumMonthlySpend;
-
-            // Adjust slider if current value is less than new minimum
-            if (parseInt(totalMediaSpendRange.value) < calculatedMinimumMonthlySpend) {
-                totalMediaSpendRange.value = calculatedMinimumMonthlySpend;
-                totalMediaSpendNumber.value = calculatedMinimumMonthlySpend;
-            }
-
-            const currentMonthlySpend = parseInt(totalMediaSpendNumber.value) || 0;
-            currentSpendEl.textContent = `Current Monthly: ${formatCurrency(currentMonthlySpend)}`;
+            const googleCreativeCost = googleServices * 750;
             
-            // 6-Month Calculations
-            const totalMediaSpend6Mo = currentMonthlySpend * campaignDuration;
-            const totalAgencyFee6Mo = totalMediaSpend6Mo * 0.15;
+            return metaCreativeCost + googleCreativeCost;
+        }
+
+        function calculateCosts() {
+            const metaServices = parseInt(metaServicesInput.value) || 0;
+            const googleServices = parseInt(googleServicesInput.value) || 0;
+            const tiktokServices = parseInt(tiktokServicesInput.value) || 0;
+            const spotifyServices = parseInt(spotifyServicesInput.value) || 0;
+            const youtubeServices = parseInt(youtubeServicesInput.value) || 0;
+
+            const minMonthlySpend = 
+                (metaServices * 8000) + 
+                (googleServices * 5000) +
+                (tiktokServices * 10000) +
+                (spotifyServices * 10000) +
+                (youtubeServices * 10000);
+
+            minSpendEl.textContent = formatCurrency(minMonthlySpend);
+            mediaSpendSlider.min = minMonthlySpend;
+            mediaSpendInput.min = minMonthlySpend;
+
+            // Only adjust slider down if its value is below the new minimum
+            if (parseFloat(mediaSpendSlider.value) < minMonthlySpend) {
+                mediaSpendSlider.value = minMonthlySpend;
+                mediaSpendInput.value = minMonthlySpend;
+            }
+
+            const totalMonthlyMediaSpend = parseFloat(mediaSpendSlider.value);
+            const totalSixMonthMediaSpend = totalMonthlyMediaSpend * 6;
+            
+            // Totals Section
+            const totalAgencyFee = totalSixMonthMediaSpend * 0.15;
+            const creativeProductionCovered = calculateCreativeCosts();
+            
+            const totalServiceLines = metaServices + googleServices + tiktokServices + spotifyServices + youtubeServices;
+            const customizationFees = customizationsCheckbox.checked ? (225 * totalServiceLines) : 0;
+            const totalCreativeCosts = creativeProductionCovered + customizationFees;
+            
+            document.getElementById('total-media-spend').textContent = formatCurrency(totalSixMonthMediaSpend);
+            document.getElementById('total-creative-costs').textContent = formatCurrency(totalCreativeCosts);
+            document.getElementById('total-agency-fee').textContent = formatCurrency(totalAgencyFee);
 
             // Stronger's Contribution
-            const strongerMediaContribution6Mo = Math.min(totalMediaSpend6Mo * 0.5, 60000 * campaignDuration);
-            const strongerAgencyFeeContribution6Mo = Math.min(totalMediaSpend6Mo, 250000 * campaignDuration) * 0.15;
+            // *** FIX IS HERE ***
+            // The cap is now correctly applied to the total 6-month spend.
+            const strongerMediaSpend = Math.min(totalSixMonthMediaSpend * 0.5, 60000);
+            const strongerAgencyFee = Math.min(totalAgencyFee, 37500);
+            const totalStrongerContribution = strongerMediaSpend + strongerAgencyFee + creativeProductionCovered;
             
-            const totalStrongerContribution6Mo = strongerMediaContribution6Mo + strongerAgencyFeeContribution6Mo + creativeSavings;
-
-            // Affiliate's Costs
-            const affiliateMediaSpend6Mo = totalMediaSpend6Mo - strongerMediaContribution6Mo;
-            const affiliateAgencyFee6Mo = totalAgencyFee6Mo - strongerAgencyFeeContribution6Mo;
+            document.getElementById('stronger-media-spend').textContent = formatCurrency(strongerMediaSpend);
+            document.getElementById('stronger-agency-fee').textContent = formatCurrency(strongerAgencyFee);
+            document.getElementById('creative-production-covered').textContent = formatCurrency(creativeProductionCovered);
+            document.getElementById('total-stronger-contribution').textContent = formatCurrency(totalStrongerContribution);
             
-            // Customization Fee Calculation
-            let customizationFee = 0;
-            if (customizationsCheckbox.checked) {
-                customizationFee = (metaServices + googleServices + tiktokServices + spotifyServices + youtubeServices) * 225;
-            }
-            
-            const totalCreativeCost6Mo = creativeSavings + customizationFee;
-            const totalAffiliateCost6Mo = affiliateMediaSpend6Mo + affiliateAgencyFee6Mo + customizationFee;
+            // Affiliate's Cost
+            const affiliateMediaSpend = totalSixMonthMediaSpend - strongerMediaSpend;
+            const affiliateAgencyFee = totalAgencyFee - strongerAgencyFee;
+            const totalAffiliateCost = affiliateMediaSpend + affiliateAgencyFee + customizationFees;
 
-            // Update UI
-            totalMediaSpendEl.textContent = formatCurrency(totalMediaSpend6Mo);
-            totalAgencyFeeEl.textContent = formatCurrency(totalAgencyFee6Mo);
-            totalCreativeCostsEl.textContent = formatCurrency(totalCreativeCost6Mo);
+            document.getElementById('affiliate-media-spend').textContent = formatCurrency(affiliateMediaSpend);
+            document.getElementById('affiliate-agency-fee').textContent = formatCurrency(affiliateAgencyFee);
+            document.getElementById('customization-fees').textContent = formatCurrency(customizationFees);
+            document.getElementById('total-affiliate-cost').textContent = formatCurrency(totalAffiliateCost);
 
-            affiliateMediaSpendEl.textContent = formatCurrency(affiliateMediaSpend6Mo);
-            affiliateAgencyFeeEl.textContent = formatCurrency(affiliateAgencyFee6Mo);
-            affiliateCustomizationFeeEl.textContent = formatCurrency(customizationFee);
-            totalAffiliateCostEl.textContent = formatCurrency(totalAffiliateCost6Mo);
-
-            strongerMediaSpendEl.textContent = formatCurrency(strongerMediaContribution6Mo);
-            strongerAgencyFeeEl.textContent = formatCurrency(strongerAgencyFeeContribution6Mo);
-            strongerCreativeProductionEl.textContent = formatCurrency(creativeSavings);
-            totalStrongerContributionEl.textContent = formatCurrency(totalStrongerContribution6Mo);
-            
-            totalSavingsEl.textContent = formatCurrency(totalStrongerContribution6Mo);
+            // Savings
+            document.getElementById('total-savings').textContent = formatCurrency(totalStrongerContribution);
         }
         
-        // Event listeners
-        metaInput.addEventListener('input', calculateCosts);
-        googleInput.addEventListener('input', calculateCosts);
-        tiktokInput.addEventListener('input', calculateCosts);
-        spotifyInput.addEventListener('input', calculateCosts);
-        youtubeInput.addEventListener('input', calculateCosts);
-        totalMediaSpendRange.addEventListener('input', () => {
-            totalMediaSpendNumber.value = totalMediaSpendRange.value;
-            calculateCosts();
-        });
-        totalMediaSpendNumber.addEventListener('input', () => {
-            totalMediaSpendRange.value = totalMediaSpendNumber.value;
-            calculateCosts();
-        });
-        customizationsCheckbox.addEventListener('change', calculateCosts);
+        // Event Listeners
+        inputs.forEach(input => input.addEventListener('input', calculateCosts));
 
-        // Initial calculation on page load
+        mediaSpendSlider.addEventListener('input', (e) => {
+            mediaSpendInput.value = e.target.value;
+        });
+
+        mediaSpendInput.addEventListener('input', (e) => {
+             // Ensure value doesn't go below minimum when typed
+            const minVal = parseFloat(mediaSpendInput.min);
+            if (parseFloat(e.target.value) < minVal) {
+                e.target.value = minVal;
+            }
+            mediaSpendSlider.value = e.target.value;
+        });
+        
+        // Initial Calculation on page load
         document.addEventListener('DOMContentLoaded', calculateCosts);
-    </script>
 
+    </script>
 </body>
 </html>
+
